@@ -2,10 +2,7 @@ package murphystudio.objects;
 
 import javax.sound.midi.*;
 import javax.sound.sampled.*;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.lang.management.ManagementFactory;
 import java.util.ArrayList;
 
@@ -283,8 +280,37 @@ public class ExternInterface {
         String PID = getProcessId("<PID>");
 
         ClassLoader loader = Thread.currentThread().getContextClassLoader();
-        String[] command = { loader.getResource("bash/alsaGetSink.sh").getPath()};
+        InputStream alsaStream = loader.getResourceAsStream("bash/alsaGetSink.sh");
+        String alsaContent = convertStreamToString(alsaStream);
+        File alsaFileTmp = new File("/tmp/alsaGetSinkMurphy");
+        if(!alsaFileTmp.exists()){
+            try {
+                alsaFileTmp.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        alsaFileTmp.setWritable(true);
+        alsaFileTmp.setExecutable(true);
+
+
+        FileOutputStream fop = null;
+        try {
+            fop = new FileOutputStream(alsaFileTmp);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        try {
+            fop.write(alsaContent.getBytes());
+            fop.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        String[] command = { alsaFileTmp.getAbsolutePath() };
         Process process = null;
+
+
 
         ArrayList<Integer> sinks = new ArrayList<Integer>();
 
@@ -327,5 +353,10 @@ public class ExternInterface {
             // ignore
         }
         return fallback;
+    }
+
+    static String convertStreamToString(java.io.InputStream is) {
+        java.util.Scanner s = new java.util.Scanner(is).useDelimiter("\\A");
+        return s.hasNext() ? s.next() : "";
     }
 }
