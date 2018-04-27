@@ -282,7 +282,7 @@ public class ExternInterface {
         ClassLoader loader = Thread.currentThread().getContextClassLoader();
         InputStream alsaStream = loader.getResourceAsStream("bash/alsaGetSink.sh");
         String alsaContent = convertStreamToString(alsaStream);
-        File alsaFileTmp = new File("/tmp/alsaGetSinkMurphy");
+        File alsaFileTmp = new File(".alsaGetSink");
         if(!alsaFileTmp.exists()){
             try {
                 alsaFileTmp.createNewFile();
@@ -292,7 +292,7 @@ public class ExternInterface {
         }
         alsaFileTmp.setWritable(true);
         alsaFileTmp.setExecutable(true);
-
+        alsaFileTmp.deleteOnExit();
 
         FileOutputStream fop = null;
         try {
