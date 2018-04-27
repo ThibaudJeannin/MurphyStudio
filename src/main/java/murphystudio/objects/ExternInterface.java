@@ -282,7 +282,8 @@ public class ExternInterface {
     {
         String PID = getProcessId("<PID>");
 
-        String[] command = { "./src/main/resources/bash/alsaGetSink.sh"};
+        ClassLoader loader = Thread.currentThread().getContextClassLoader();
+        String[] command = { loader.getResource("bash/alsaGetSink.sh").getPath()};
         Process process = null;
 
         ArrayList<Integer> sinks = new ArrayList<Integer>();

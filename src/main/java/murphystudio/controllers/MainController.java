@@ -72,7 +72,7 @@ public class MainController extends Controller
         this.model.mainExternInterface = new ExternInterface();
 
         if ( System.getProperty("os.name").equals("Linux") )
-//            this.model.sink = this.model.mainExternInterface.getAlsaSinkNumberFromPid();
+            this.model.sink = this.model.mainExternInterface.getAlsaSinkNumberFromPid();
 
         /* On initialise les murphystudio.models secondaires */
         this.model.chordModel = new ChordModel();
