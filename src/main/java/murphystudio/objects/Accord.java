@@ -91,8 +91,6 @@ public class Accord implements Cloneable{
         this.dominant = dominant;
         dominantName = characterHashMap.get(dominant%12);
 
-        System.out.println(dominantName);
-
         this.isMinor = isMinor;
         this.isFifth = isFifth;
         this.isSeventh = isSeventh;
