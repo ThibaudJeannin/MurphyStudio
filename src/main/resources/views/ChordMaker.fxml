@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="chordMakerPane" maxHeight="+Infinity" maxWidth="+Infinity" minHeight="50.0" minWidth="420.0" prefHeight="440.0" prefWidth="900.0" styleClass="background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.121" fx:controller="murphystudio.controllers.ChordMakerController">
+<BorderPane fx:id="chordMakerPane" maxHeight="+Infinity" maxWidth="+Infinity" minHeight="50.0" minWidth="420.0" prefHeight="440.0" prefWidth="900.0" styleClass="background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="murphystudio.controllers.ChordMakerController">
    <stylesheets>
       <URL value="@/css/style.css" />
    </stylesheets>
@@ -42,7 +42,7 @@
             </VBox>
          </left>
          <right>
-            <AnchorPane BorderPane.alignment="CENTER">
+            <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefWidth="100.0" BorderPane.alignment="CENTER">
                <children>
                   <AnchorPane layoutX="1.0" layoutY="43.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0">
                      <children>
